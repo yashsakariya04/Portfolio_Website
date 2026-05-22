@@ -76,11 +76,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Yash Sakariya — AI/ML Engineer & Backend Developer" },
       { name: "description", content: "Portfolio of Yash Sakariya — AI/ML Engineer building production-grade agentic AI, RAG, and backend systems." },
       { name: "author", content: "Yash Sakariya" },
-      { property: "og:title", content: "Yash Sakariya — AI/ML Engineer" },
-      { property: "og:description", content: "Production-grade agentic AI, RAG, and backend systems." },
+      { property: "og:title", content: "Yash Sakariya — AI/ML Engineer & Backend Developer" },
+      { property: "og:description", content: "Portfolio of Yash Sakariya — AI/ML Engineer building production-grade agentic AI, RAG, and backend systems." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Yash Sakariya — AI/ML Engineer & Backend Developer" },
+      { name: "twitter:description", content: "Portfolio of Yash Sakariya — AI/ML Engineer building production-grade agentic AI, RAG, and backend systems." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03c21120-225f-4a95-b55c-648257c1d75f" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03c21120-225f-4a95-b55c-648257c1d75f" },
     ],
     links: [
       {
