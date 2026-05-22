@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 
-type Ach = { id: string; title: string; description?: string | null; icon: string; date?: string | null; category?: string | null };
+type Ach = { id: string; title: string; description?: string | null; icon: string | null; date?: string | null; category?: string | null };
 
 export function Achievements({ items }: { items: Ach[] }) {
   return (

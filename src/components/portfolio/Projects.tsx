@@ -15,8 +15,8 @@ type Project = {
   thumbnail_url: string | null;
   screenshots: string[] | null;
   architecture_highlights: string[] | null;
-  is_flagship: boolean;
-  status: string;
+  is_flagship: boolean | null;
+  status: string | null;
 };
 
 const catColors: Record<string, string> = {

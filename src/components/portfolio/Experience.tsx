@@ -5,11 +5,11 @@ type Exp = {
   id: string;
   company: string;
   role: string;
-  type: string;
+  type: string | null;
   location?: string | null;
   start_date?: string | null;
   end_date?: string | null;
-  is_current: boolean;
+  is_current: boolean | null;
   description?: string | null;
   responsibilities?: string[] | null;
   tech_used?: string[] | null;

@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 
-type Skill = { id: string; name: string; category: string; proficiency: number; icon_name?: string | null };
+type Skill = { id: string; name: string; category: string; proficiency: number | null; icon_name?: string | null };
 
 export function Skills({ skills }: { skills: Skill[] }) {
   const categories = useMemo(() => {
@@ -50,13 +50,13 @@ export function Skills({ skills }: { skills: Skill[] }) {
             <div className="h-1.5 rounded-full bg-muted overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
-                whileInView={{ width: `${s.proficiency}%` }}
+                whileInView={{ width: `${s.proficiency ?? 0}%` }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="h-full gradient-accent"
               />
             </div>
-            <div className="text-right text-[10px] font-mono text-cyan mt-1">{s.proficiency}%</div>
+            <div className="text-right text-[10px] font-mono text-cyan mt-1">{s.proficiency ?? 0}%</div>
           </motion.div>
         ))}
       </motion.div>
