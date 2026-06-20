@@ -39,7 +39,7 @@ function Typer({ words }: { words: string[] }) {
   );
 }
 
-export function Hero({ profile }: { profile: Profile | null }) {
+export function Hero({ profile, counts }: { profile: Profile | null; counts?: { projects: number; skills: number; achievements: number } }) {
   const taglines = profile?.taglines?.length
     ? profile.taglines
     : ["AI/ML Engineer", "Backend Architect"];
@@ -170,9 +170,9 @@ export function Hero({ profile }: { profile: Profile | null }) {
           className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
-            { v: "6+", l: "Projects Built" },
-            { v: "2+", l: "Years Building AI" },
-            { v: "A+", l: "Major Project Grade" },
+            { v: `${counts?.projects ?? 0}+`, l: "Projects Built" },
+            { v: `${counts?.skills ?? 0}+`, l: "Skills" },
+            { v: `${counts?.achievements ?? 0}+`, l: "Achievements" },
           ].map((s) => (
             <div key={s.l}>
               <div className="font-display text-3xl sm:text-4xl text-cyan text-glow">{s.v}</div>
