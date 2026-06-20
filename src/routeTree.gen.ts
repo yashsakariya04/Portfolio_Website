@@ -10,15 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminSkillsRouteImport } from './routes/admin.skills'
 import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
 import { Route as AdminProfileRouteImport } from './routes/admin.profile'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
+import { Route as AdminExperienceRouteImport } from './routes/admin.experience'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminAchievementsRouteImport } from './routes/admin.achievements'
+import { Route as ApiPublicNotifyContactRouteImport } from './routes/api/public/notify-contact'
 import { Route as AdminProjectsIdRouteImport } from './routes/admin.projects.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSkillsRoute = AdminSkillsRouteImport.update({
+  id: '/admin/skills',
+  path: '/admin/skills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminProjectsRoute = AdminProjectsRouteImport.update({
@@ -31,14 +42,39 @@ const AdminProfileRoute = AdminProfileRouteImport.update({
   path: '/admin/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/admin/messages',
+  path: '/admin/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/admin/gallery',
+  path: '/admin/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminExperienceRoute = AdminExperienceRouteImport.update({
+  id: '/admin/experience',
+  path: '/admin/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin/dashboard',
   path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAchievementsRoute = AdminAchievementsRouteImport.update({
+  id: '/admin/achievements',
+  path: '/admin/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicNotifyContactRoute = ApiPublicNotifyContactRouteImport.update({
+  id: '/api/public/notify-contact',
+  path: '/api/public/notify-contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminProjectsIdRoute = AdminProjectsIdRouteImport.update({
@@ -49,62 +85,104 @@ const AdminProjectsIdRoute = AdminProjectsIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/experience': typeof AdminExperienceRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/projects': typeof AdminProjectsRouteWithChildren
+  '/admin/skills': typeof AdminSkillsRoute
   '/admin/projects/$id': typeof AdminProjectsIdRoute
+  '/api/public/notify-contact': typeof ApiPublicNotifyContactRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/experience': typeof AdminExperienceRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/projects': typeof AdminProjectsRouteWithChildren
+  '/admin/skills': typeof AdminSkillsRoute
   '/admin/projects/$id': typeof AdminProjectsIdRoute
+  '/api/public/notify-contact': typeof ApiPublicNotifyContactRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/experience': typeof AdminExperienceRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/projects': typeof AdminProjectsRouteWithChildren
+  '/admin/skills': typeof AdminSkillsRoute
   '/admin/projects/$id': typeof AdminProjectsIdRoute
+  '/api/public/notify-contact': typeof ApiPublicNotifyContactRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin/achievements'
     | '/admin/dashboard'
+    | '/admin/experience'
+    | '/admin/gallery'
     | '/admin/login'
+    | '/admin/messages'
     | '/admin/profile'
     | '/admin/projects'
+    | '/admin/skills'
     | '/admin/projects/$id'
+    | '/api/public/notify-contact'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin/achievements'
     | '/admin/dashboard'
+    | '/admin/experience'
+    | '/admin/gallery'
     | '/admin/login'
+    | '/admin/messages'
     | '/admin/profile'
     | '/admin/projects'
+    | '/admin/skills'
     | '/admin/projects/$id'
+    | '/api/public/notify-contact'
   id:
     | '__root__'
     | '/'
+    | '/admin/achievements'
     | '/admin/dashboard'
+    | '/admin/experience'
+    | '/admin/gallery'
     | '/admin/login'
+    | '/admin/messages'
     | '/admin/profile'
     | '/admin/projects'
+    | '/admin/skills'
     | '/admin/projects/$id'
+    | '/api/public/notify-contact'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminAchievementsRoute: typeof AdminAchievementsRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminExperienceRoute: typeof AdminExperienceRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
   AdminProfileRoute: typeof AdminProfileRoute
   AdminProjectsRoute: typeof AdminProjectsRouteWithChildren
+  AdminSkillsRoute: typeof AdminSkillsRoute
+  ApiPublicNotifyContactRoute: typeof ApiPublicNotifyContactRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -114,6 +192,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/skills': {
+      id: '/admin/skills'
+      path: '/admin/skills'
+      fullPath: '/admin/skills'
+      preLoaderRoute: typeof AdminSkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/projects': {
@@ -130,6 +215,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/admin/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/admin/login'
@@ -137,11 +229,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/admin/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/experience': {
+      id: '/admin/experience'
+      path: '/admin/experience'
+      fullPath: '/admin/experience'
+      preLoaderRoute: typeof AdminExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/admin/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/achievements': {
+      id: '/admin/achievements'
+      path: '/admin/achievements'
+      fullPath: '/admin/achievements'
+      preLoaderRoute: typeof AdminAchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/notify-contact': {
+      id: '/api/public/notify-contact'
+      path: '/api/public/notify-contact'
+      fullPath: '/api/public/notify-contact'
+      preLoaderRoute: typeof ApiPublicNotifyContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/projects/$id': {
@@ -168,10 +288,16 @@ const AdminProjectsRouteWithChildren = AdminProjectsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminAchievementsRoute: AdminAchievementsRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminExperienceRoute: AdminExperienceRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
   AdminProfileRoute: AdminProfileRoute,
   AdminProjectsRoute: AdminProjectsRouteWithChildren,
+  AdminSkillsRoute: AdminSkillsRoute,
+  ApiPublicNotifyContactRoute: ApiPublicNotifyContactRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

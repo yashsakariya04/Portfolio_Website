@@ -43,29 +43,35 @@ export type Database = {
       }
       contact_messages: {
         Row: {
+          company: string | null
           created_at: string | null
           email: string
           id: string
           is_read: boolean | null
           message: string
+          message_type: string | null
           name: string
           subject: string | null
         }
         Insert: {
+          company?: string | null
           created_at?: string | null
           email: string
           id?: string
           is_read?: boolean | null
           message: string
+          message_type?: string | null
           name: string
           subject?: string | null
         }
         Update: {
+          company?: string | null
           created_at?: string | null
           email?: string
           id?: string
           is_read?: boolean | null
           message?: string
+          message_type?: string | null
           name?: string
           subject?: string | null
         }

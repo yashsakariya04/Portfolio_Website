@@ -26,10 +26,16 @@ function Index() {
   const experience = useQuery({ queryKey: ["experience"], queryFn: fetchExperience });
   const achievements = useQuery({ queryKey: ["achievements"], queryFn: fetchAchievements });
 
+  const counts = {
+    projects: projects.data?.length ?? 0,
+    skills: skills.data?.length ?? 0,
+    achievements: achievements.data?.length ?? 0,
+  };
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <Hero profile={profile.data ?? null} />
+      <Hero profile={profile.data ?? null} counts={counts} />
       <About profile={profile.data ?? null} />
       <Skills skills={skills.data ?? []} />
       <Projects projects={projects.data ?? []} />

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Check } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { supabase } from "@/integrations/supabase/client";
+import { notifyContact } from "@/lib/admin-utils";
 
 type Profile = {
   email?: string | null;
@@ -14,25 +15,43 @@ type Profile = {
   availability_status?: string | null;
 };
 
+const TYPES = ["Opportunity", "Collaboration", "Freelance", "General"];
+const emptyForm = { name: "", email: "", company: "", message_type: "Opportunity", subject: "", message: "" };
+
 export function Contact({ profile }: { profile: Profile | null }) {
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState(emptyForm);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill in name, email, and message");
-      return;
-    }
+  const validate = () => {
+    const e: Record<string, string> = {};
+    if (form.name.trim().length < 2) e.name = "Please enter your name";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Valid email required";
+    if (form.message.trim().length < 10) e.message = "Message must be at least 10 characters";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const submit = async (ev: React.FormEvent) => {
+    ev.preventDefault();
+    if (!validate()) return;
     setLoading(true);
-    const { error } = await supabase.from("contact_messages").insert(form);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      company: form.company.trim() || null,
+      message_type: form.message_type,
+      subject: form.subject.trim() || `${form.message_type} inquiry`,
+      message: form.message.trim(),
+    });
     setLoading(false);
-    if (error) {
-      toast.error("Failed to send. Try again.");
-      return;
-    }
-    toast.success("Message sent! I'll reply soon 🚀");
-    setForm({ name: "", email: "", subject: "", message: "" });
+    if (error) { toast.error("Failed to send. Try again."); return; }
+    notifyContact({ name: form.name, email: form.email, subject: form.subject || `${form.message_type} inquiry`, message: form.message });
+    toast.success("✓ Message sent! Yash will get back to you soon.");
+    setSent(true);
+    setForm(emptyForm);
+    setTimeout(() => setSent(false), 6000);
   };
 
   return (
@@ -83,16 +102,38 @@ export function Contact({ profile }: { profile: Profile | null }) {
           onSubmit={submit}
           className="card-tech p-6 space-y-4"
         >
-          {(["name", "email", "subject"] as const).map((f) => (
-            <Input key={f} placeholder={f[0].toUpperCase() + f.slice(1)} value={form[f]} onChange={(v) => setForm({ ...form, [f]: v })} type={f === "email" ? "email" : "text"} />
-          ))}
-          <textarea
-            placeholder="Your message"
-            rows={5}
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
+          {sent && (
+            <div className="flex items-center gap-2 p-3 rounded-lg border border-cyan/40 bg-cyan/10 text-cyan text-sm">
+              <Check size={16} /> Message sent! Yash will get back to you soon.
+            </div>
+          )}
+          <div>
+            <Input placeholder="Full name *" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
+            {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
+          </div>
+          <div>
+            <Input placeholder="Email *" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
+            {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
+          </div>
+          <Input placeholder="Company / Organization (optional)" value={form.company} onChange={(v) => setForm({ ...form, company: v })} />
+          <select
+            value={form.message_type}
+            onChange={(e) => setForm({ ...form, message_type: e.target.value })}
             className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan transition-colors"
-          />
+          >
+            {TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+          </select>
+          <Input placeholder="Subject (optional)" value={form.subject} onChange={(v) => setForm({ ...form, subject: v })} />
+          <div>
+            <textarea
+              placeholder="Your message *"
+              rows={5}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan transition-colors"
+            />
+            {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message}</p>}
+          </div>
           <button
             type="submit"
             disabled={loading}
