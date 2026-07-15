@@ -9,8 +9,9 @@ import { Field, TextInput, Select, Slider, NumberInput, formCardCls, btnPrimary,
 
 export const Route = createFileRoute("/admin/skills")({ component: SkillsAdmin });
 
-const CATEGORIES = ["Languages", "AI/ML", "Libraries & Frameworks", "Backend & Deployment", "Databases & Tools"];
-const empty = { name: "", category: "Languages", proficiency: 80, icon_name: "⚙️", order_index: 0 };
+const CATEGORIES = ["Languages", "AI/ML", "Automation", "Architecture", "Backend", "Databases", "Tools"];
+const TIERS = ["core", "important", "supporting"];
+const empty = { name: "", category: "AI/ML", tier: "supporting", proficiency: 80, icon_name: "⚙️", order_index: 0 };
 
 function SkillsAdmin() {
   const { data, refetch, isLoading } = useQuery({
@@ -53,6 +54,7 @@ function SkillsAdmin() {
           <div className="grid sm:grid-cols-2 gap-4">
             <Field label="Name"><TextInput value={editing.name} onChange={(v) => setEditing({ ...editing, name: v })} /></Field>
             <Field label="Category"><Select value={editing.category} onChange={(v) => setEditing({ ...editing, category: v })} options={CATEGORIES} /></Field>
+            <Field label="Tier"><Select value={editing.tier ?? "supporting"} onChange={(v) => setEditing({ ...editing, tier: v })} options={TIERS} /></Field>
             <Field label="Icon / Emoji"><TextInput value={editing.icon_name ?? ""} onChange={(v) => setEditing({ ...editing, icon_name: v })} /></Field>
             <Field label="Order"><NumberInput value={editing.order_index ?? 0} onChange={(v) => setEditing({ ...editing, order_index: v })} /></Field>
           </div>
