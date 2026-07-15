@@ -159,6 +159,8 @@ export type Database = {
         Row: {
           availability_status: string | null
           coffees_count: number | null
+          current_company: string | null
+          current_position: string | null
           email: string | null
           github_url: string | null
           id: string
@@ -178,6 +180,8 @@ export type Database = {
         Insert: {
           availability_status?: string | null
           coffees_count?: number | null
+          current_company?: string | null
+          current_position?: string | null
           email?: string | null
           github_url?: string | null
           id?: string
@@ -197,6 +201,8 @@ export type Database = {
         Update: {
           availability_status?: string | null
           coffees_count?: number | null
+          current_company?: string | null
+          current_position?: string | null
           email?: string | null
           github_url?: string | null
           id?: string
@@ -281,6 +287,7 @@ export type Database = {
           name: string
           order_index: number | null
           proficiency: number | null
+          tier: string
         }
         Insert: {
           category: string
@@ -290,6 +297,7 @@ export type Database = {
           name: string
           order_index?: number | null
           proficiency?: number | null
+          tier?: string
         }
         Update: {
           category?: string
@@ -299,6 +307,7 @@ export type Database = {
           name?: string
           order_index?: number | null
           proficiency?: number | null
+          tier?: string
         }
         Relationships: []
       }
