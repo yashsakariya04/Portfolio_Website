@@ -65,7 +65,7 @@ export function Contact({ profile }: { profile: Profile | null }) {
         >
           <div className="font-mono text-xs text-cyan mb-3">// I'm open to</div>
           <ul className="space-y-1.5 mb-8 text-sm text-muted-foreground">
-            {["Full-time roles", "Internships", "Freelance AI projects", "Collaborations", "Open source"].map((x) => (
+            {["Senior AI engineering roles", "Solution architect roles", "Freelance AI automation projects", "Collaborations", "Open source"].map((x) => (
               <li key={x} className="flex items-center gap-2">
                 <span className="text-cyan">›</span> {x}
               </li>
