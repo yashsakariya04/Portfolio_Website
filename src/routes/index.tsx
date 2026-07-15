@@ -7,6 +7,7 @@ import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
 import { Experience } from "@/components/portfolio/Experience";
 import { Achievements } from "@/components/portfolio/Achievements";
+import { Community } from "@/components/portfolio/Community";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import {
