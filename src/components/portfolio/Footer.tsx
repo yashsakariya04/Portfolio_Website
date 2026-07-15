@@ -6,7 +6,7 @@ export function Footer({ profile }: { profile: { name?: string; github_url?: str
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 items-center text-sm">
         <div>
           <div className="font-display text-lg font-bold text-cyan text-glow">{profile?.name ?? "Yash Sakariya"}</div>
-          <div className="text-muted-foreground text-xs">Building production-grade AI systems.</div>
+          <div className="text-muted-foreground text-xs">AI Automation Engineer & Solution Architect · Currently @ Pucho.ai</div>
         </div>
         <div className="flex md:justify-center gap-5 text-muted-foreground text-xs">
           <a href="#about" className="hover:text-cyan">About</a>

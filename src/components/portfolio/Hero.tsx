@@ -10,6 +10,8 @@ type Profile = {
   linkedin_url?: string | null;
   email?: string | null;
   resume_url?: string | null;
+  current_position?: string | null;
+  current_company?: string | null;
 };
 
 function Typer({ words }: { words: string[] }) {
@@ -44,6 +46,9 @@ export function Hero({ profile, counts }: { profile: Profile | null; counts?: { 
     ? profile.taglines
     : ["AI/ML Engineer", "Backend Architect"];
   const name = profile?.name ?? "Yash Sakariya";
+  const currentRole = profile?.current_position ?? "AI Automation Executive & Solution Architect";
+  const currentCompany = profile?.current_company ?? "Pucho.ai";
+  const headline = profile?.title ?? "AI Automation Engineer & Solution Architect";
 
   return (
     <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -72,17 +77,18 @@ export function Hero({ profile, counts }: { profile: Profile | null; counts?: { 
       ))}
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <motion.div
+        <motion.a
+          href="#experience"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 chip chip-cyan mb-8"
+          className="inline-flex items-center gap-2 chip chip-cyan mb-6 hover:border-cyan transition-colors"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan pulse-dot" />
-          <Sparkles size={12} /> Available for opportunities
-        </motion.div>
+          <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
+          <Sparkles size={12} /> Currently: {currentRole} @ {currentCompany}
+        </motion.a>
 
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-6">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-4">
           {name.split(" ").map((word, idx) => (
             <motion.span
               key={idx}
@@ -95,6 +101,15 @@ export function Hero({ profile, counts }: { profile: Profile | null; counts?: { 
             </motion.span>
           ))}
         </h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85 }}
+          className="text-lg sm:text-xl font-display text-foreground/90 mb-4"
+        >
+          {headline}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -113,7 +128,7 @@ export function Hero({ profile, counts }: { profile: Profile | null; counts?: { 
           transition={{ delay: 1 }}
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
         >
-          Building production-grade intelligent systems that solve real-world problems.
+          I design and ship AI agents and automation workflows that replace manual business processes — from architecture to deployment.
         </motion.p>
 
         <motion.div
