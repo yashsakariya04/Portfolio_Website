@@ -37,10 +37,11 @@ function Index() {
       <Navbar />
       <Hero profile={profile.data ?? null} counts={counts} />
       <About profile={profile.data ?? null} />
+      <Experience items={experience.data ?? []} />
       <Skills skills={skills.data ?? []} />
       <Projects projects={projects.data ?? []} />
-      <Experience items={experience.data ?? []} />
       <Achievements items={achievements.data ?? []} />
+      <Community />
       <Contact profile={profile.data ?? null} />
       <Footer profile={profile.data ?? null} />
     </main>
