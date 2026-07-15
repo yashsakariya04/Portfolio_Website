@@ -59,6 +59,12 @@ function ProfilePage() {
           <div className="grid sm:grid-cols-2 gap-4">
             <Field label="Name"><TextInput value={form.name ?? ""} onChange={(v) => set("name", v)} /></Field>
             <Field label="Title"><TextInput value={form.title ?? ""} onChange={(v) => set("title", v)} /></Field>
+            <Field label="Current position (shown in hero + about)">
+              <TextInput value={form.current_position ?? ""} onChange={(v) => set("current_position", v)} />
+            </Field>
+            <Field label="Current company">
+              <TextInput value={form.current_company ?? ""} onChange={(v) => set("current_company", v)} />
+            </Field>
           </div>
           <Field label="Taglines (cycle through hero animation)">
             <TagInput tags={form.taglines ?? []} onChange={(t) => set("taglines", t)} placeholder="Add tagline + Enter" />
