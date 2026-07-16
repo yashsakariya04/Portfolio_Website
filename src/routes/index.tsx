@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Navbar } from "@/components/portfolio/Navbar";
+import { Ambient, ScrollProgress } from "@/components/portfolio/Ambient";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
 import { Skills } from "@/components/portfolio/Skills";
@@ -34,8 +35,11 @@ function Index() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="relative min-h-screen bg-background text-foreground">
+      <Ambient />
+      <ScrollProgress />
       <Navbar />
+      <div className="relative z-10">
       <Hero profile={profile.data ?? null} counts={counts} />
       <About profile={profile.data ?? null} />
       <Experience items={experience.data ?? []} />
@@ -45,6 +49,7 @@ function Index() {
       <Community />
       <Contact profile={profile.data ?? null} />
       <Footer profile={profile.data ?? null} />
+      </div>
     </main>
   );
 }

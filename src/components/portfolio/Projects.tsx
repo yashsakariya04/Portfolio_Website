@@ -48,6 +48,7 @@ export function Projects({ projects }: { projects: Project[] }) {
           viewport={{ once: true, amount: 0.2 }}
           className="relative mb-14 rounded-2xl border border-cyan/40 overflow-hidden glow-cyan-lg group"
         >
+          <div className="agent-trace absolute top-0 inset-x-0 h-[2px] z-10" />
           <div className="absolute inset-0 gradient-accent opacity-[0.06]" />
           <div className="absolute inset-0 grid-bg opacity-20" />
           <div className="relative grid md:grid-cols-2 gap-8 p-8 md:p-10">
@@ -128,8 +129,11 @@ export function Projects({ projects }: { projects: Project[] }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: (i % 6) * 0.06 }}
             onClick={() => setOpen(p)}
-            className="card-tech p-6 text-left group hover:-translate-y-1"
+            className="card-tech relative p-6 text-left group overflow-hidden"
           >
+            {i < 3 && (
+              <div className="agent-trace absolute top-0 inset-x-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity" />
+            )}
             <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-gradient-to-br from-cyan/10 to-blue-500/10 flex items-center justify-center">
               {p.thumbnail_url ? (
                 <img src={p.thumbnail_url} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />

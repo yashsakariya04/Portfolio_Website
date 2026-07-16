@@ -23,10 +23,16 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-xl bg-background/70 border-b border-border" : "bg-transparent"
+        scrolled
+          ? "backdrop-blur-xl bg-[rgba(10,10,15,0.75)] border-b border-[var(--border)]"
+          : "bg-[rgba(10,10,15,0.35)] backdrop-blur-md"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div
+        className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? "h-14" : "h-20"
+        }`}
+      >
         <a href="#top" className="flex items-center gap-2 group">
           <span className="font-display font-bold text-xl text-cyan text-glow">YS</span>
           <span className="hidden sm:inline font-display text-sm text-muted-foreground group-hover:text-foreground transition-colors">
@@ -45,7 +51,7 @@ export function Navbar() {
           ))}
           <a
             href="#contact"
-            className="px-4 py-1.5 text-sm border border-cyan text-cyan rounded-full hover:bg-cyan hover:text-primary-foreground transition-all glow-cyan"
+            className="px-4 py-1.5 text-sm rounded-full text-foreground border-gradient hover:glow-cyan transition-all"
           >
             Hire Me
           </a>
