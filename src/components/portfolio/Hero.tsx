@@ -52,12 +52,11 @@ export function Hero({ profile, counts }: { profile: Profile | null; counts?: { 
 
   return (
     <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-60" />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 40%, oklch(0.83 0.16 215 / 0.18) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(109,94,245,0.18) 0%, transparent 70%)",
         }}
       />
       {/* floating particles */}
