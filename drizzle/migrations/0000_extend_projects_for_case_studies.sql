@@ -1,0 +1,12 @@
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS slug text;
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS project_type text NOT NULL DEFAULT 'personal';
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS outcome_line text;
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS problem text;
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS role text;
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS built_points text[] NOT NULL DEFAULT '{}'::text[];
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS impact_metrics text[] NOT NULL DEFAULT '{}'::text[];
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS stack text[] NOT NULL DEFAULT '{}'::text[];
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS architecture_steps text[] NOT NULL DEFAULT '{}'::text[];
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS cover_image text;
+ALTER TABLE public.projects ADD COLUMN IF NOT EXISTS year text;
+CREATE UNIQUE INDEX IF NOT EXISTS projects_slug_unique_idx ON public.projects (slug) WHERE slug IS NOT NULL;

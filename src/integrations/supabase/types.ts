@@ -224,57 +224,90 @@ export type Database = {
       projects: {
         Row: {
           architecture_highlights: string[] | null
+          architecture_steps: string[]
+          built_points: string[]
           category: string
+          cover_image: string | null
           created_at: string | null
           description: string | null
           github_url: string | null
           id: string
+          impact_metrics: string[]
           is_featured: boolean | null
           is_flagship: boolean | null
           live_url: string | null
           long_description: string | null
           order_index: number | null
+          outcome_line: string | null
+          problem: string | null
+          project_type: string
+          role: string | null
           screenshots: string[] | null
+          slug: string | null
+          stack: string[]
           status: string | null
           tech_stack: string[] | null
           thumbnail_url: string | null
           title: string
+          year: string | null
         }
         Insert: {
           architecture_highlights?: string[] | null
+          architecture_steps?: string[]
+          built_points?: string[]
           category: string
+          cover_image?: string | null
           created_at?: string | null
           description?: string | null
           github_url?: string | null
           id?: string
+          impact_metrics?: string[]
           is_featured?: boolean | null
           is_flagship?: boolean | null
           live_url?: string | null
           long_description?: string | null
           order_index?: number | null
+          outcome_line?: string | null
+          problem?: string | null
+          project_type?: string
+          role?: string | null
           screenshots?: string[] | null
+          slug?: string | null
+          stack?: string[]
           status?: string | null
           tech_stack?: string[] | null
           thumbnail_url?: string | null
           title: string
+          year?: string | null
         }
         Update: {
           architecture_highlights?: string[] | null
+          architecture_steps?: string[]
+          built_points?: string[]
           category?: string
+          cover_image?: string | null
           created_at?: string | null
           description?: string | null
           github_url?: string | null
           id?: string
+          impact_metrics?: string[]
           is_featured?: boolean | null
           is_flagship?: boolean | null
           live_url?: string | null
           long_description?: string | null
           order_index?: number | null
+          outcome_line?: string | null
+          problem?: string | null
+          project_type?: string
+          role?: string | null
           screenshots?: string[] | null
+          slug?: string | null
+          stack?: string[]
           status?: string | null
           tech_stack?: string[] | null
           thumbnail_url?: string | null
           title?: string
+          year?: string | null
         }
         Relationships: []
       }
